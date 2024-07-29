@@ -480,8 +480,8 @@ class VLPartConfig(InferenceConfigBase):
         return demo
 
     @classmethod
-    def from_args(cls, device: str = "cuda:0"):
-        return cls(model_name="VLPart", device=device)
+    def from_args(cls, model_type:str = "swinbase_cascade_lvis_paco_pascalpart_partimagenet_inparsed", device: str = "cuda:0"):
+        return cls(model_name="VLPart", model_type=model_type, device=device)
 
 
 @dataclass
