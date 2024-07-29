@@ -1,0 +1,12 @@
+[submodule "third_party/MaskDINO"]
+	path = third_party/MaskDINO
+	url = https://github.com/IDEA-Research/MaskDINO.git
+[submodule "third_party/Cutie"]
+	path = third_party/Cutie
+	url = https://github.com/hkchengrex/Cutie.git
+[submodule "third_party/VLPart"]
+	path = third_party/VLPart
+	url = https://github.com/facebookresearch/VLPart.git
+[submodule "third_party/masa"]
+	path = third_party/masa
+	url = https://github.com/siyuanliii/masa.git

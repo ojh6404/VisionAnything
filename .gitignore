@@ -1,0 +1,12 @@
+.DS_Store
+.idea
+*.log
+.vscode
+tmp/
+*.egg-info
+
+*.mp4
+*.pt
+*.pth
+*.onnx
+*.pyc
