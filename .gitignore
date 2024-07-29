@@ -4,6 +4,7 @@
 .vscode
 tmp/
 *.egg-info
+__pycache__
 
 *.mp4
 *.pt

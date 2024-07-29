@@ -527,7 +527,7 @@ class MASAModel(InferenceModelBase):
                 for label_id, instance_id in zip(label_ids.cpu().numpy(), instances_id.cpu().numpy())
             ]
 
-            visualization = image.copy()
+            visualization = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
             detections = sv.Detections(
                 xyxy=bboxes.cpu().numpy(),
                 tracker_id=instances_id.cpu().numpy(),
