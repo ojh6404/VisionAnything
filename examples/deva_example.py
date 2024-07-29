@@ -35,7 +35,7 @@ def main(args):
         if not ret:
             break
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        detections, visualization, segmentation = deva_model.predict(frame, sam_model, gd_model)
+        detections, segmentation, visualization = deva_model.predict(frame, sam_model, gd_model)
         writer.write(cv2.cvtColor(visualization, cv2.COLOR_RGB2BGR))
     writer.release()
 

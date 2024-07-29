@@ -143,15 +143,15 @@ class DEVAModel(InferenceModelBase):
                 self.cnt += 1
             segmentation = torch.argmax(prob, dim=0).cpu().numpy().astype(np.int32)  # (H, W)
 
+            seg_id_to_mask_id = {
+                key.id: value for key, value in self.predictor.object_manager.obj_to_tmp_id.items()
+            }
             segments_info = self.predictor.object_manager.get_current_segments_info()
             # filter out segments with area 0
             for seg in segments_info:
                 area = int((segmentation == seg_id_to_mask_id[seg["id"]]).sum())
                 seg["area"] = area
             segments_info = [seg for seg in segments_info if seg["area"] > 0]
-            seg_id_to_mask_id = {
-                key.id: value for key, value in self.predictor.object_manager.obj_to_tmp_id.items()
-            }
 
             if segments_info:
                 all_masks = []
@@ -468,7 +468,7 @@ class MASAModel(InferenceModelBase):
 
     @torch.inference_mode()
     def predict(self, image: np.ndarray, detection_model: Optional[InferenceModelBase] = None):
-        image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR) # NOTE MASA model expects BGR image
+        image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)  # NOTE MASA model expects BGR image
         if detection_model is not None and self.model_config.model_type == "masa_r50":
             detections, visualization = detection_model.predict(image)
 
