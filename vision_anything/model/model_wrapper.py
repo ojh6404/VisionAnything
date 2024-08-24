@@ -59,7 +59,8 @@ class GroundingDINOModel(InferenceModelBase):
         detections.confidence = detections.confidence[nms_idx]
         detections.class_id = detections.class_id[nms_idx]
 
-        labels = [self.classes[cls_id] for cls_id in detections.class_id]
+
+        labels = [self.classes[cls_id] for cls_id in detections.class_id if cls_id is not None]
         scores = detections.confidence.tolist()
         labels_with_scores = [f"{label} {score:.2f}" for label, score in zip(labels, scores)]
 
