@@ -5,8 +5,11 @@ import torch
 import torchvision
 import torch.nn.functional as F
 import supervision as sv
-from mmengine.dataset import default_collate
-from mmengine.runner import autocast
+try:
+    from mmengine.dataset import default_collate
+    from mmengine.runner import autocast
+except ImportError:
+    print("Please install mmengine if you want to use MASA model")
 
 from deva.dataset.utils import im_normalization
 from deva.inference.object_info import ObjectInfo
