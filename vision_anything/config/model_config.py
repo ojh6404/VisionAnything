@@ -66,9 +66,9 @@ class GroundingDINOConfig(InferenceConfigBase):
 
 @dataclass
 class YOLOConfig(InferenceConfigBase):
-    model_type: str = "yolov8x-worldv2.pt"
+    model_type: str = "yolov8x-worldv2"
     model_checkpoints = {
-        "yolov8x_worldv2": "yolov8x-worldv2.pt",
+        "yolov8x-worldv2": "yolov8x-worldv2.pt",
     }
 
     def get_predictor(self):
